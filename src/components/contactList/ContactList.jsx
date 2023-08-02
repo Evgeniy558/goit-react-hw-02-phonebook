@@ -14,6 +14,7 @@ const List = ({ contacts, displayedContacts, onClick }) => {
                 </div>
 
                 <Button
+                  className={css.align_btn}
                   type="button"
                   onClick={() => onClick(el.id)}
                   typebutton={"button_del"}
