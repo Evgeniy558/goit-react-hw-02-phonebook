@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import css from "./form.module.css";
+import css from "./ContactsForm.module.css";
 import Button from "./button/Button";
 const Form = ({ onSubmit }) => {
   const patternName = "^[a-zA-Z]+(([' \u2013][a-zA-Z])?[a-zA-Z]*)*$";

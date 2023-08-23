@@ -1,5 +1,5 @@
 import Button from "../contactForm/button/Button";
-import css from "./List.module.css";
+import css from "./ContactList.module.css";
 const List = ({ contacts, displayedContacts, onClick }) => {
   return (
     <div>
