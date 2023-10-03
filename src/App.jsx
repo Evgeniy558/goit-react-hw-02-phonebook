@@ -1,8 +1,8 @@
 import { Component } from "react";
 import css from "./App.module.css";
 import { nanoid } from "nanoid";
-import Form from "./components/contactForm/ContactsForm";
-import List from "./components/contactList/ContactList";
+import ContactForm from "./components/contactForm/ContactsForm";
+import ContactList from "./components/contactList/ContactList";
 import Filter from "./components/filter/Filter";
 class App extends Component {
   state = {
@@ -10,10 +10,8 @@ class App extends Component {
     filter: "",
   };
 
-  addNewContact = (event) => {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    const number = event.target.elements.number.value;
+  addNewContact = (formData) => {
+    const { name, number } = formData;
     if (
       this.state.contacts.find((el) => {
         return el.name.toLocaleLowerCase() === name.toLowerCase();
@@ -28,18 +26,10 @@ class App extends Component {
         ],
       }));
     }
-
-    event.currentTarget.reset();
   };
 
-  handleSearch = (event) => {
-    const { value } = event.target;
-    this.setState(
-      (prevState) => ({ filter: (prevState.filter = value) }),
-      () => {
-        this.filter();
-      }
-    );
+  handleSearch = (SearchValue) => {
+    this.setState({ filter: SearchValue });
   };
 
   filter = () => {
@@ -66,13 +56,13 @@ class App extends Component {
         <header className={css.appheader}>
           <section className={css.section}>
             <h1>Phonebook</h1>
-            <Form onSubmit={this.addNewContact} />
+            <ContactForm onSubmit={this.addNewContact} />
           </section>
           <section className={css.section}>
             <h2>Contacts</h2>
             <Filter onChange={this.handleSearch} />
             {displayedContacts.length > 0 ? (
-              <List
+              <ContactList
                 displayedContacts={displayedContacts}
                 onClick={this.deleteContact}
               />
@@ -85,5 +75,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

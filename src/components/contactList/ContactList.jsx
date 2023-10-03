@@ -1,15 +1,15 @@
+import PropTypes from "prop-types";
 import Button from "../contactForm/button/Button";
 import css from "./ContactList.module.css";
-const List = ({ displayedContacts, onClick }) => {
+const ContactList = ({ displayedContacts, onClick }) => {
   return (
     <div>
-      {" "}
       <ul>
         {displayedContacts.map((el) => {
           return (
             <li key={el.id} className={css.list_item}>
               <div className={css.container_info}>
-                {el.name}: {el.number}{" "}
+                {el.name}: {el.number}
               </div>
 
               <Button
@@ -18,8 +18,7 @@ const List = ({ displayedContacts, onClick }) => {
                 onClick={() => onClick(el.id)}
                 typebutton={"button_del"}
               >
-                {" "}
-                Delete{" "}
+                Delete
               </Button>
             </li>
           );
@@ -28,4 +27,8 @@ const List = ({ displayedContacts, onClick }) => {
     </div>
   );
 };
-export default List;
+export default ContactList;
+ContactList.propTypes = {
+  displayedContacts: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
+};

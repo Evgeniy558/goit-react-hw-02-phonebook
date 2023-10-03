@@ -1,4 +1,5 @@
 import css from "./button.module.css";
+import PropTypes from "prop-types";
 const Button = ({ children, typebutton, onClick }) => {
   const classButton =
     typebutton === "button_add"
@@ -15,3 +16,7 @@ const Button = ({ children, typebutton, onClick }) => {
   );
 };
 export default Button;
+Button.propTypes = {
+  typebutton: PropTypes.string,
+  onClick: PropTypes.func,
+};
