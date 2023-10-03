@@ -10,7 +10,7 @@ class App extends Component {
     filter: "",
   };
 
-  getData = (event) => {
+  addNewContact = (event) => {
     event.preventDefault();
     const name = event.target.elements.name.value;
     const number = event.target.elements.number.value;
@@ -66,16 +66,19 @@ class App extends Component {
         <header className={css.appheader}>
           <section className={css.section}>
             <h1>Phonebook</h1>
-            <Form onSubmit={this.getData} />
+            <Form onSubmit={this.addNewContact} />
           </section>
           <section className={css.section}>
             <h2>Contacts</h2>
             <Filter onChange={this.handleSearch} />
-            <List
-              contacts={contacts}
-              displayedContacts={displayedContacts}
-              onClick={this.deleteContact}
-            />
+            {displayedContacts.length > 0 ? (
+              <List
+                displayedContacts={displayedContacts}
+                onClick={this.deleteContact}
+              />
+            ) : (
+              <p> No contacts </p>
+            )}
           </section>
         </header>
       </div>
