@@ -61,7 +61,7 @@ class App extends Component {
           <section className={css.section}>
             <h2>Contacts</h2>
             <Filter onChange={this.handleSearch} />
-            {displayedContacts.length > 0 ? (
+            {displayedContacts.length !== 0 ? (
               <ContactList
                 displayedContacts={displayedContacts}
                 onClick={this.deleteContact}
