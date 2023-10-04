@@ -50,7 +50,7 @@ class App extends Component {
   render() {
     const { contacts, filter } = this.state;
     const displayedContacts = filter ? this.filter() : contacts;
-
+    console.log("displayedContacts", displayedContacts.length);
     return (
       <div className="App">
         <header className={css.appheader}>
@@ -67,7 +67,7 @@ class App extends Component {
                 onClick={this.deleteContact}
               />
             ) : (
-              <p> No contacts </p>
+              <p>No contacts</p>
             )}
           </section>
         </header>
